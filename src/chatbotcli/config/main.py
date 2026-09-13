@@ -1,13 +1,13 @@
 import sys
-from pydantic import SecretStr, ValidationError
+from pydantic import SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from ..error import CustomError
 
 class AppSettings(BaseSettings):
     ENVIRONMENT: str
-    DATABASE_URL: str
-    API_SECRET_KEY: SecretStr 
+    OPEN_API_SECRET_KEY: SecretStr 
+    OPEN_API_MODEL: str = "gpt-4o-mini"
 
     model_config = SettingsConfigDict(
         env_file=".env",
