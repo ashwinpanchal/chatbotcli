@@ -1,3 +1,3 @@
-from .llm import LLM
+from .model import Model
 
-__all__ = ["LLM"]
+__all__ = ["Model"]

@@ -1,14 +1,14 @@
-from .core import LLM
+from .agents import Agent
 
 def main():
-    llm = LLM()
+    agent = Agent()
 
     while True:
         try:
             user_msg = input("You: ").strip()
             if not user_msg:
                 continue
-            response = llm.chat(user_msg)
+            response = agent.chat(user_msg)
             print(f"Assistant: {response}\n")
         except KeyboardInterrupt:
             print("\nGoodbye!")
