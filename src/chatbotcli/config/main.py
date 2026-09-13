@@ -1,8 +1,11 @@
-from pydantic import SecretStr
+import sys
+from pydantic import SecretStr, ValidationError
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+from ..error import CustomError
+
 class AppSettings(BaseSettings):
-    ENVIRONMENT: str = "development"
+    ENVIRONMENT: str
     DATABASE_URL: str
     API_SECRET_KEY: SecretStr 
 
@@ -13,4 +16,9 @@ class AppSettings(BaseSettings):
         extra="ignore"
     )
 
-settings = AppSettings()
+try:
+    settings = AppSettings()
+except Exception as e:
+    print(CustomError(__file__, e))
+    sys.exit(1)
+
