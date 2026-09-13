@@ -107,7 +107,3 @@ Feel free to extend the chatbot with additional features such as:
 - Prompt templates
 - Rate limiting
 - Response caching
-
-## License
-
-This project is open source and available under the MIT License.
