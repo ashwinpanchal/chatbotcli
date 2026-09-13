@@ -17,10 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      ENVIRONMENT: test
-      OPEN_API_SECRET_KEY: sk-test-key-12345
-      OPEN_API_MODEL: gpt-4o-mini
 
     steps:
       - uses: actions/checkout@v4
@@ -34,7 +30,7 @@ jobs:
           version: "latest"
 
       - name: Install dependencies
-        run: uv sync
+        run: uv sync --all-groups
 
       - name: Run tests
         run: uv run pytest
@@ -61,9 +57,7 @@ jobs:
       - name: Commit version bump
         run: |
           git add pyproject.toml src/chatbotcli/__init__.py
-          git commit -m "Release v${{ steps.bump.outputs.version }}
-
-Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>"
+          git commit -m "Release v${{ steps.bump.outputs.version }}"
 
       - name: Create tag
         run: |
