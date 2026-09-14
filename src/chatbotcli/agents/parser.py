@@ -22,4 +22,7 @@ def parse_response(text: str) -> dict:
             "action_input": action_input
         }
 
-    raise ValueError("Could not parse model response")
+    return {
+        "type": "final",
+        "content": text.strip()
+    }
